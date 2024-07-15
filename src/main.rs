@@ -26,8 +26,7 @@ impl FileItem {
         self.content.lines().par_bridge().into_par_iter().map(|line|
         line.split_terminator(|c: char| !c.is_alphanumeric())
             .fold(0, |acc, _| acc + 1)
-        )
-            .reduce(|| 0_u32, |acc, e| acc + (e as u32))
+        ).sum()
     }
 }
 
